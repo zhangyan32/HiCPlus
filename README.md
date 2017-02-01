@@ -1,4 +1,5 @@
-# HiCPlus: Resolution Enhancement of HiC interaction heatmap 
+# HiCPlus
+Resolution Enhancement of HiC interaction heatmap 
 
 ## Dependency
 
