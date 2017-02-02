@@ -13,7 +13,7 @@ Resolution Enhancement of HiC interaction heatmap
 No installation is required. Just clone the repo to your local folder. 
 
 ```
-$ git clone git://github.com/zhangyan32/HiCPlus
+$ git clone https://github.com/zhangyan32/HiCPlus.git
 
 ```
 
