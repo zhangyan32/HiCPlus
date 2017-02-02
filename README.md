@@ -4,17 +4,18 @@ Resolution Enhancement of HiC interaction heatmap
 ## Dependency
 
 * [Python] (https://www.python.org) (2.7) with Numpy and Scipy. We recommand use the  [Anaconda] (https://www.continuum.io) distribution to install Python. 
-* [Theano] (https://github.com/Theano/Theano) (latest). At the time I wrote this, Theano 0.7.0 is already included in Anaconda. However, it is missing some crucial helper functions. You need to git clone the latest bleeding edge version since there isn't a version number for it:
+* [Theano] (https://github.com/Theano/Theano) (0.8.0) 
+* [Lasagne] (https://github.com/Lasagne/Lasagne) (0.2.dev1)
+* [Nolearn] (https://github.com/dnouri/nolearn) (0.6a0.dev0)
+
+
+## Installation
+No installation is required. Just clone the repo to your local folder. 
 
 ```
-$ git clone git://github.com/Theano/Theano.git
-$ cd Theano
-$ python setup.py develop
+$ git clone git://github.com/zhangyan32/HiCPlus
+
 ```
-
-## Installatsdfn
-
-TODO: Describe the installation process
 
 ## Usage
 
@@ -27,11 +28,7 @@ TODO: Write usage instructions
 3. Commit your changes: `git commit -am 'Add some feature'`
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request :D
-
-## History
-
-TODO: Write history
-
+cd
 ## Credits
 
 TODO: Write credits
