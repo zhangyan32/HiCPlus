@@ -10,25 +10,18 @@ resolution = 10000
 
 def main():
     cells =['GM12878_combined','GM12878','GM12878_replicate',  'HMEC',  'HUVEC',  'IMR90',  'K562',  'KBM7',  'NHEK']
-    
-    #cells =[ 'HUVEC']
-    #cells =['K562', 'IMR90']
-    #cells =['NHEK', 'KBM7',]
-    cells =[ 'GM12878_primary']
-    cells =['K562', 'KBM7']
-    cells = ['CH12-LX']
 
-    chrN_start = 19
-    chrN_end = 20
+    chrN_start = 18
+    chrN_end = 18
 
-    cell = 'K562'
+    cell = 'GM12878_replicate'
     file_list = []
     length_list = []
     for chrN in range(chrN_start,chrN_end+1, 1):
         HiCfile = '/home/zhangyan/normHiC10k/'+cell+'chr'+str(chrN)+'_norm_10k_maqe30.hic'
         file_list.append(HiCfile)
         length_list.append(util.chrs_length[chrN-1]/resolution) 
-    genSamples(file_list, length_list, '/home/zhangyan/temptesttemptest', tag = str(chrN_start) + '_' + str(chrN_end))
+    genSamples(file_list, length_list, '/home/zhangyan/temptesttemptest', tag = str(chrN_start) + '_' + str(chrN_end)+ '_' + cell)
  
 
 def genSamples(list_of_files, list_of_length, destination_folder, save_intermediate = True, load_intermediate = True, tag = ''):    
@@ -47,11 +40,12 @@ def genSamples(list_of_files, list_of_length, destination_folder, save_intermedi
             print(intermediate_file + ' is saving')
             np.save(intermediate_file, HiCmatrix)
         util.genSubRegions(HiCmatrix, Exper_HiRes, index)
-
+    np.save(destination_folder + '/index' + tag, np.array(index))
     blurred_samples = []
     bicubic_samples = []
     bilinear_samples = []
     scaledLowRes_samples = []
+
 
     for i in range(0, len(Exper_HiRes)):
         Exper_HiRes_sample = np.minimum(100, Exper_HiRes[i][0])           
@@ -68,11 +62,13 @@ def genSamples(list_of_files, list_of_length, destination_folder, save_intermedi
     bicubic_samples = np.array(bicubic_samples).astype(np.float16)
     bilinear_samples = np.array(bilinear_samples).astype(np.float16)
     scaledLowRes_samples = np.array(scaledLowRes_samples).astype(np.float16)
+    Exper_HiRes = np.minimum(100, np.array(Exper_HiRes).astype(np.float16))
 
     np.save(destination_folder + '/bilinear_x4_chr' + tag, bilinear_samples)
     np.save(destination_folder + '/blurred_x4_chr' + tag, blurred_samples)
     np.save(destination_folder + '/bicubic_x4_chr' + tag, bicubic_samples)
     np.save(destination_folder + '/scaled_blur_x4_chr' + tag, scaledLowRes_samples)
+    np.save(destination_folder + '/experimentalHiCRes_chr' + tag, Exper_HiRes)
 
 
 if __name__ == "__main__":

@@ -30,6 +30,7 @@ def readMatrix(filename, total_length):
 def genSubRegions(HiCsample, result, index, matrix_name = '', SubRegion_size = 40, overlap = 15, max_distance = 100):
     step = SubRegion_size - overlap
     total_loci = HiCsample.shape[0]
+    index.append((-1, total_loci))
     for i in range(0, total_loci, step):
         for j in range(0, total_loci, step):
             if (abs(i - j) > max_distance or i + SubRegion_size >= total_loci or j + SubRegion_size >= total_loci):
