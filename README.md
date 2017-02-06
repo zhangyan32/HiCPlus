@@ -1,5 +1,5 @@
 # HiCPlus
-Resolution Enhancement of HiC interaction heatmap.  
+Resolution Enhancement of HiC interaction heatmap. The repo is still under construction. 
 
 ## Dependency
 
@@ -25,6 +25,12 @@ Only high-resolution HiC matrix is neede and you also need to provide the upscal
 
 ### Prediction
 Load the sample and provide the low-resolution sample. Done. 
+
+### Sample Process
+We provide the scirpt src/genSample.py to generate samples for both training and testing. In the training sets, we use the high-resolution experimental HiC map to create the low resolution map and interpolated map. In the testing sets, you may provide your only low-resolution map with interpolation. 
+
+### About the normalization and experimental condition
+As we known, HiC experiment have several different types of cutting enzyme as well as different normalization method. Our model can handle all of the conditions as long as the training and testing are under the same condition. For example, if the KR normalized samples are used in the trianing stage, the trained model is only work for the KR normalized low reoslution sample.   
 
 
 ## Citation

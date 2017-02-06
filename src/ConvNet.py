@@ -1,5 +1,5 @@
 # Author: Yan Zhang  
-# Email: zhangyan.cse@gmail.com
+# Email: zhangyan.cse (@) gmail.com
 
 import sys
 import matplotlib.pyplot as plt
