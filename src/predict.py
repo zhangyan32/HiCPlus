@@ -1,38 +1,27 @@
-import matplotlib
-matplotlib.use('Agg')
+# Author: Yan Zhang  
+# Email: zhangyan.cse (@) gmail.com
 
 import sys
-import matplotlib.pyplot as plt
-
-import lasagne
-from lasagne import layers
-from lasagne.updates import nesterov_momentum
-from nolearn.lasagne import NeuralNet
-import numpy as np
-import theano.tensor as T
-from nolearn.lasagne import BatchIterator
-from theano.sandbox.neighbours import neibs2images
-from lasagne.objectives import squared_error
-from lasagne.updates import sgd
-from scipy.stats import poisson
-
-from lasagne.nonlinearities import tanh
-import pickle
-import sys
-from sklearn.metrics import mean_squared_error as mse
-from sklearn.metrics import precision_score
 import os
+import pickle
 import urllib
 import gzip
 import cPickle
-import sys
+import math
 sys.setrecursionlimit(10000)
-import math
-from sklearn.metrics import mean_squared_error
-from scipy.stats import pearsonr
-from scipy.stats import spearmanr
 
-import math
+import numpy as np
+
+from sklearn.metrics import mean_squared_error as mse
+from sklearn.metrics import precision_score
+from sklearn.metrics import mean_squared_error
+import theano.tensor as T
+import lasagne
+from lasagne import layers
+from lasagne.updates import sgd
+
+from nolearn.lasagne import NeuralNet
+from nolearn.lasagne import BatchIterator
 
 path = '/home/zhangyan/temptesttemptest'
 input_model_name = path + '/model.net'
@@ -51,13 +40,12 @@ y_predict = net1.predict(X_test)
 length = math.sqrt(y_predict.shape[1])
 y_predict = np.reshape(y_predict, (y_predict.shape[0], length, length))
 
+# load the index for recombine the samples to the HiC map
 index = np.load(path + '/index18_18_GM12878_replicate.npy')
-
 size = index[0][1]
 predictedMatrix = np.zeros((size, size))
-print predictedMatrix.shape
-print y_predict.shape
 
+# recombine the samples to the entire HiC interaction map
 for i in range(0, y_predict.shape[0]):
     x = int(index[i+1][0])
     y = int(index[i+1][1])

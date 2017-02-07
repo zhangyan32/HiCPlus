@@ -2,34 +2,28 @@
 # Email: zhangyan.cse (@) gmail.com
 
 import sys
-import matplotlib.pyplot as plt
-import lasagne
-from lasagne import layers
-from lasagne.updates import nesterov_momentum
-from nolearn.lasagne import NeuralNet
-import numpy as np
-import theano.tensor as T
-from nolearn.lasagne import BatchIterator
-from theano.sandbox.neighbours import neibs2images
-from lasagne.objectives import squared_error
-from lasagne.updates import sgd
-
-
-from lasagne.nonlinearities import tanh
-import pickle
-import sys
-from sklearn.metrics import mean_squared_error as mse
-from sklearn.metrics import precision_score
 import os
 import urllib
 import gzip
 import cPickle
-import sys
+import pickle
 sys.setrecursionlimit(10000)
+
+import numpy as np
+import theano.tensor as T
+
+import lasagne
+from lasagne import layers
+from nolearn.lasagne import NeuralNet
+from nolearn.lasagne import BatchIterator
+from theano.sandbox.neighbours import neibs2images
+from lasagne.updates import sgd
+
+#hyperparameters in the ConvNet.
 learning_rate = 0.00001
-conv2d1_filters_numbers = 8
+conv2d1_filters_numbers = 16
 conv2d1_filters_size = 9
-conv2d2_filters_numbers = 8
+conv2d2_filters_numbers = 16
 conv2d2_filters_size = 1
 conv2d3_filters_numbers = 1
 conv2d3_filters_size = 5
@@ -72,6 +66,7 @@ y_train = np.array(y_train).astype(np.float32)
 # we need our target to be 1 dimensional
 Y_out = y_train.reshape((y_train.shape[0], -1))
 
+# set to a large number and Ctrl+C can break the training and save the model
 epochs = 300000
 
 if (not Resume):
