@@ -21,17 +21,16 @@ $ git clone https://github.com/zhangyan32/HiCPlus.git
 ## Usage
 
 ### Training
-Only high-resolution HiC matrix is neede and you also need to provide the upscaling factor. We will generate the corresponding low-resolution matrix for the training. For example, if you want to enhance the resolution from 40kb to 10kb, you need to provide the 10kb resolution matrix and upscaling factor, which is 4 in this case. The type of the matrix should be in the same format(same normalization method and the cutting enzyme). The training process will generate a model file, which is in bianry form and can only be read in the same environment. 
+Only high-resolution HiC matrix is needed, and you also need to provide the upscaling factor. We will generate the corresponding low-resolution matrix for the training. For example, if you want to enhance the resolution from 40kb to 10kb, you need to provide the 10kb resolution matrix and upscaling factor, which is 4 in this case. The type of the matrix should be in the same format(same normalization method and the cutting enzyme). The training process will generate a model file, which is in binary form and can only be read in the same environment. 
 
 ### Prediction
 Load the sample and provide the low-resolution sample. Done. 
 
-### Sample Process
-We provide the scirpt src/genSample.py to generate samples for both training and testing. In the training sets, we use the high-resolution experimental HiC map to create the low resolution map and interpolated map. In the testing sets, you may provide your only low-resolution map with interpolation. 
+### Processing samples
+We provide the script src/genSample.py to generate samples for both training and testing. In the training sets, we use the high-resolution experimental HiC map to create the low-resolution map and interpolated map. In the testing sets, you may provide your only low-resolution map with interpolation. 
 
 ### About the normalization and experimental condition
-As we known, HiC experiment have several different types of cutting enzyme as well as different normalization method. Our model can handle all of the conditions as long as the training and testing are under the same condition. For example, if the KR normalized samples are used in the trianing stage, the trained model is only work for the KR normalized low reoslution sample.   
-
+HiC experiments have several different types of cutting enzyme as well as different normalization method. Our model can handle all of the conditions as long as the training and testing are under the same condition. For example, if the KR normalized samples are used in the training stage, the trained model only works for the KR normalized low-resolution sample. 
 
 ## Citation
 
