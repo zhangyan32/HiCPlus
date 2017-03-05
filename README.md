@@ -11,7 +11,7 @@ Resolution Enhancement of HiC interaction heatmap. The repo is still under const
 
 
 ## Installation
-No installation is required. Just clone the repo to your local folder. 
+Just clone the repo to your local folder. 
 
 ```
 $ git clone https://github.com/zhangyan32/HiCPlus.git
@@ -34,8 +34,8 @@ HiC experiments have several different types of cutting enzyme as well as differ
 
 ## Citation
 
-TODO: Write citation
+http://biorxiv.org/content/early/2017/03/01/112631
 
 ## License
 
-TODO: Write license
+
