@@ -1,5 +1,9 @@
 # HiCPlus
 Resolution Enhancement of HiC interaction heatmap. 
+## Deprecation warning
+Since Theano is no long deveopled, as well as to avoid too many dependencies, we impletemented the Pytorch version 
+https://github.com/zhangyan32/HiCPlus_pytorch
+Currently, this repo is no longer maintained. 
 
 ## Dependency
 
@@ -8,8 +12,7 @@ Resolution Enhancement of HiC interaction heatmap.
 * [Lasagne] (https://github.com/Lasagne/Lasagne) (0.2.dev1)
 * [Nolearn] (https://github.com/dnouri/nolearn) (0.6a0.dev0)
 
-## Since Theano is no long deveopled, as well as to avoid too many dependencies, we impletemented the Pytorch version 
-https://github.com/zhangyan32/HiCPlus_pytorch
+
 
 ## Installation
 Just clone the repo to your local folder. 
